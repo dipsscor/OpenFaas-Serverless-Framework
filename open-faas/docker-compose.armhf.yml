@@ -211,6 +211,21 @@ services:
             - basic-auth-password
 
 
+    grafana:
+      image: grafana/grafana
+      container_name: grafana
+      volumes:
+        - ../env/grafana_conf/provisioning:/etc/grafana/provisioning
+        - ../env/grafana_conf/custom_dashboards:/var/lib/grafana/dashboards
+      ports:
+        - 3000:3000
+      restart: unless-stopped    
+      networks:
+        - functions  
+      env_file:
+        - ../env/grafana_conf/grafana.env
+        
+
 configs:
      prometheus_config:
          file: ./prometheus/prometheus.yml
