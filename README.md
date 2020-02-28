@@ -30,10 +30,44 @@ The components are the API gateway, the function watchdog, and an instance of Pr
     
 #### With authentication 
     cd open-faas && ./deploy_stack.sh
+ 
+ 
+ ![alt text](https://github.com/dipsscor/OpenFaas-Serverless-Framework/blob/master/screenshots/OpenFaas.png)
+    
+### Grafana:
+
+For adding Grafana as separate service
+
+    docker service create --name=grafana --network=func_functions -p 3000:3000 grafana/grafana
+
+In this project , Additional Grafana configurations and dashboard has been added in open-faas-->docker-compose*.yml files
+Also, OpenFaas Grafana dashboard is added -->Dashboard_id-->3434
+
+![alt text](https://github.com/dipsscor/OpenFaas-Serverless-Framework/blob/master/screenshots/Grafana.png)
+
+
+# URL Access:
+
+### OpenFaas Dashboard URL:
+
+    http://localhost:8080/ui
+    
+### Prometheus URL:
+
+    http://localhost:9090 
+    
+    
+### Grafana URL:
+
+    http://localhost:3000     
     
     
     
 # TearDown steps:
+
+
+## Remove function on OpenFaas
+Remove all the functions from OpenFaas dashboard
 
 ## Remove OpenFaas
 
@@ -45,6 +79,17 @@ The components are the API gateway, the function watchdog, and an instance of Pr
     docker swarm leave --force
     
 
+# Address of the API Gateway on functions.yml
+
+### On Kubernetes
+    The default address for the gateway on Kubernetes is http://gateway.openfaas:8080.
+
+### On Docker Swarm
+    The default address for the gateway is http://gateway:8080
+    
+
 # References
 
     https://medium.com/@pavithra_38952/openfaas-on-docker-440541d635a2
+    https://docs.openfaas.com/deployment/docker-swarm/
+    
