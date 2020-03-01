@@ -18,6 +18,17 @@ The components are the API gateway, the function watchdog, and an instance of Pr
 ![alt text](https://github.com/dipsscor/OpenFaas-Serverless-Framework/blob/master/screenshots/architecture.png)
 
 
+
+## Function watchdog
+The function watchdog is an OpenFaaS component. It is responsible for wrapping the real working code around a function program. The function program’s requirement is only to accept input via the standard input (stdin) and print out the result, of course, to the standard output (stdout).
+The API gateway (gateway) connects to function containers through an overlay network. Each function container contains the following:
+
+    Function watchdog, fwatchdog
+    A certain function program written in any language
+
+![alt text](https://github.com/dipsscor/OpenFaas-Serverless-Framework/blob/master/screenshots/watchdog.png)
+
+
 # Deployment Steps:
 
 ### Intitialize Docker Swarm
